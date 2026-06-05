@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-cinzel: 'Cinzel', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FDFAF6;
+  color: #2C2C2C;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: #C8963E;
+  color: white;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-navy text-cream px-8 py-4 font-sans text-sm tracking-widest uppercase hover:bg-navy-dark transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-navy text-navy px-8 py-4 font-sans text-sm tracking-widest uppercase hover:bg-navy hover:text-cream transition-all duration-300;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold text-white px-8 py-4 font-sans text-sm tracking-widest uppercase hover:bg-amber-600 transition-all duration-300;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl text-charcoal leading-tight;
+  }
+
+  .section-subtitle {
+    @apply font-display text-xs tracking-[0.3em] uppercase text-gold mb-4;
+  }
+
+  .input-field {
+    @apply w-full border border-gray-200 bg-white px-4 py-3 text-sm focus:outline-none focus:border-navy transition-colors duration-200 font-sans;
+  }
+
+  .gold-divider {
+    @apply w-16 h-px bg-gold mx-auto my-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
