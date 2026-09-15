@@ -1,22 +1,32 @@
+import Image from 'next/image'
+
 const amenities = [
   {
     category: 'Piscine & extérieur',
     icon: '🏊',
+    photo: '/photos/piscine.jpg',
+    photoAlt: 'Piscine privée de Villa Vénus Noto',
     items: ['Piscine privée avec plongeoir', 'Gazebo & bains de soleil', 'Transats & parasols', 'Terrasse autour de la piscine', 'Espace barbecue', 'Parking privé'],
   },
   {
     category: '4 suites parentales',
     icon: '🛏',
+    photo: '/photos/villa.jpg',
+    photoAlt: 'Suites de Villa Vénus Noto',
     items: ['Suite Olivier — vue jardins', 'Suite Citronnier — vue piscine', 'Suite Amandier — vue collines', 'Suite Rooftop — vue 360°', 'Salle de bain privée dans chaque suite', 'Terrasse privative dans chaque suite'],
   },
   {
     category: 'Espaces de vie',
     icon: '🏛',
+    photo: '/photos/veranda.jpg',
+    photoAlt: 'Véranda et espaces de vie de Villa Vénus',
     items: ['Grande cuisine équipée', 'Véranda vue piscine (cuisine)', '2 vérandas couvertes', 'Four à bois authentique', 'Salon & salle à manger', 'WiFi & climatisation partout'],
   },
   {
     category: 'Rooftop & jardins',
     icon: '☀️',
+    photo: '/photos/rooftop.jpg',
+    photoAlt: 'Rooftop panoramique 360° de Villa Vénus',
     items: ['Rooftop panoramique 360°', 'Canapés & salon extérieur', 'Vue sur les collines de Noto', 'Jardins méditerranéens', 'Oliviers & amandiers centenaires', 'Pergola fleurie'],
   },
 ]
@@ -36,19 +46,32 @@ export default function Amenities() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {amenities.map((group) => (
-            <div key={group.category} className="bg-white p-8 border border-gray-100">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{group.icon}</span>
-                <h3 className="font-serif text-xl text-charcoal">{group.category}</h3>
+            <div key={group.category} className="bg-white border border-gray-100 overflow-hidden">
+              {/* Photo */}
+              <div className="relative h-56 w-full">
+                <Image
+                  src={group.photo}
+                  alt={group.photoAlt}
+                  fill
+                  className="object-cover object-center"
+                />
               </div>
-              <ul className="space-y-3">
-                {group.items.map((item) => (
-                  <li key={item} className="flex items-start gap-3 font-sans text-sm text-muted">
-                    <span className="text-gold mt-0.5 flex-shrink-0">—</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+
+              {/* Contenu */}
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-2xl">{group.icon}</span>
+                  <h3 className="font-serif text-xl text-charcoal">{group.category}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 font-sans text-sm text-muted">
+                      <span className="text-gold mt-0.5 flex-shrink-0">—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
@@ -76,7 +99,7 @@ export default function Amenities() {
             </div>
             <div>
               <h3 className="font-serif text-2xl mb-4 text-gold-light">À proximité</h3>
-              <ul className="space-y-2 font-sans text-sm text-white/80">
+              <ul className="space-y-2 font-sans text-white/80 font-sans text-sm">
                 <li>🏛 Noto baroque UNESCO — 5 km</li>
                 <li>🏖 Plages de Vendicari — 5 km</li>
                 <li>🏙 Syracuse / Ortygie — 30 km</li>
