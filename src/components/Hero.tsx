@@ -46,9 +46,9 @@ export default function Hero() {
             Sicile, Italie · Location Saisonnière
           </p>
           <h1 className="font-serif text-white text-5xl md:text-7xl lg:text-8xl leading-none mb-6 text-balance">
-            Villa
+            Villa Vénus
             <br />
-            <em className="not-italic text-gold-light">Tramonto</em>
+            <em className="not-italic text-gold-light">Noto</em>
           </h1>
           <div className="w-16 h-px bg-gold my-8" />
           <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed max-w-xl mb-10">
