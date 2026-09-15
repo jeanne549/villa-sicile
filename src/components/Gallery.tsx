@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 const photos = [
-  { src: '/photos/hero.jpg', alt: 'Piscine et jardins — vue d\'ensemble', span: 'col-span-2 row-span-2' },
-  { src: '/photos/veranda.jpg', alt: 'Véranda couverte avec vue collines', span: 'col-span-1' },
-  { src: '/photos/rooftop.jpg', alt: 'Rooftop 360° au coucher du soleil', span: 'col-span-1' },
-  { src: '/photos/jardins.jpg', alt: 'Pergola fleurie et jardins méditerranéens', span: 'col-span-1' },
-  { src: '/photos/table.jpg', alt: 'Table extérieure sur la véranda', span: 'col-span-1' },
-  { src: '/photos/facade.jpg', alt: 'Façade en pierre de la villa', span: 'col-span-2' },
+  { src: '/photos/piscine.jpg', alt: 'Piscine privée et pergola avec drapés blancs', span: 'col-span-2 row-span-2' },
+  { src: '/photos/rooftop.jpg', alt: 'Rooftop au coucher du soleil', span: 'col-span-1' },
+  { src: '/photos/jardins.jpg', alt: 'Jardins méditerranéens au soleil couchant', span: 'col-span-1' },
+  { src: '/photos/veranda.jpg', alt: 'Terrasse avec mobilier rotin et vue piscine', span: 'col-span-1' },
+  { src: '/photos/table.jpg', alt: 'Espace repas extérieur en soirée', span: 'col-span-1' },
+  { src: '/photos/facade.jpg', alt: 'Jardins et bougainvillées de la villa', span: 'col-span-2' },
 ]
 
 export default function Gallery() {
