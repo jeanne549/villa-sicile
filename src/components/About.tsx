@@ -11,9 +11,7 @@ export default function About() {
           <h2 className="section-title">Une demeure d&apos;exception<br />dans les collines de Noto</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base leading-relaxed max-w-2xl mx-auto">
-            Nichée dans les collines dorées de Noto, Villa Vénus vous invite à découvrir
-            l&apos;art de vivre sicilien dans un cadre d&apos;une beauté rare. Entourée d&apos;oliviers
-            centenaires, d&apos;amandiers et de citronniers.
+            Nichée dans les collines dorées de Noto, à seulement <strong className="text-charcoal">5 km du centre historique classé UNESCO</strong> et <strong className="text-charcoal">5 km des premières plages</strong>, Villa Vénus vous invite à découvrir l&apos;art de vivre sicilien dans un cadre d&apos;une beauté rare. Entourée d&apos;oliviers centenaires, d&apos;amandiers et de citronniers.
           </p>
         </div>
 
@@ -52,8 +50,8 @@ export default function About() {
               {[
                 { value: '4 suites', label: 'Parentales' },
                 { value: '9', label: 'Personnes max.' },
-                { value: 'Rooftop', label: 'Vue 360°' },
                 { value: '5 km', label: 'De Noto UNESCO' },
+                { value: '5 km', label: 'Des premières plages' },
               ].map((stat) => (
                 <div key={stat.label} className="border-l-2 border-gold pl-4">
                   <p className="font-serif text-2xl text-charcoal">{stat.value}</p>
