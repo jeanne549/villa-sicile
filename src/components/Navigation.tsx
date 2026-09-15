@@ -30,7 +30,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="flex flex-col items-start">
           <span className={`font-display text-lg tracking-[0.2em] uppercase transition-colors duration-300 ${scrolled ? 'text-navy' : 'text-white'}`}>
-            Villa Tramonto
+            Villa Vénus Noto
           </span>
           <span className={`font-sans text-[10px] tracking-[0.4em] uppercase transition-colors duration-300 ${scrolled ? 'text-gold' : 'text-gold-light'}`}>
             Sicile, Italie

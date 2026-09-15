@@ -12,7 +12,7 @@ export default function About() {
           <h2 className="section-title">Un refuge méditerranéen<br />hors du commun</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base leading-relaxed max-w-2xl mx-auto">
-            Perchée sur les falaises de la côte nord-est de la Sicile, Villa Tramonto est une propriété privée
+            Perchée sur les falaises de la côte nord-est de la Sicile, Villa Vénus Noto est une propriété privée
             d&apos;exception qui offre intimité, élégance et vues à couper le souffle.
           </p>
         </div>

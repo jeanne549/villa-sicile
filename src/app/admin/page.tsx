@@ -64,7 +64,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-navy flex items-center justify-center px-6">
         <div className="bg-white p-10 w-full max-w-sm">
           <h1 className="font-serif text-2xl text-charcoal mb-2">Administration</h1>
-          <p className="font-sans text-muted text-sm mb-6">Villa Tramonto</p>
+          <p className="font-sans text-muted text-sm mb-6">Villa Vénus Noto</p>
           <form onSubmit={handleLogin} className="space-y-4">
             <input
               type="password"
@@ -88,7 +88,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-linen">
       <header className="bg-navy text-white px-6 py-4 flex justify-between items-center">
         <div>
-          <h1 className="font-serif text-xl">Villa Tramonto — Administration</h1>
+          <h1 className="font-serif text-xl">Villa Vénus Noto — Administration</h1>
           <p className="font-sans text-white/60 text-xs">{requests.length} demande(s) reçue(s)</p>
         </div>
         <button onClick={() => setAuthed(false)} className="font-sans text-xs text-white/60 hover:text-white uppercase tracking-widest">
@@ -158,7 +158,7 @@ export default function AdminPage() {
 
               <div className="flex gap-3 flex-wrap">
                 <a
-                  href={`mailto:${req.email}?subject=Villa Tramonto — Votre demande de réservation`}
+                  href={`mailto:${req.email}?subject=Villa Vénus Noto — Votre demande de réservation`}
                   className="font-sans text-xs tracking-widest uppercase border border-navy text-navy px-4 py-2 hover:bg-navy hover:text-white transition-colors"
                   onClick={() => updateStatus(req.id, 'replied')}
                 >

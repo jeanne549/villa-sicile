@@ -5,7 +5,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <p className="font-display text-lg tracking-[0.2em] uppercase mb-1">Villa Tramonto</p>
+            <p className="font-display text-lg tracking-[0.2em] uppercase mb-1">Villa Vénus Noto</p>
             <p className="font-sans text-white/50 text-xs tracking-widest uppercase mb-4">Sicile, Italie</p>
             <p className="font-sans text-white/60 text-sm leading-relaxed">
               Location de villa de luxe en Sicile. Expérience haut de gamme, service personnalisé.
@@ -29,7 +29,7 @@ export default function Footer() {
           <div>
             <h4 className="font-sans text-xs tracking-widest uppercase text-gold mb-4">Contact</h4>
             <div className="space-y-2 font-sans text-white/60 text-sm">
-              <p>contact@villa-tramonto.com</p>
+              <p>contact@villa-venus-noto.com</p>
               <p>+39 090 123 456</p>
               <p className="mt-4">Sicile, Italie</p>
             </div>
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-sans text-white/40 text-xs">
-            © {year} Villa Tramonto · Tous droits réservés
+            © {year} Villa Vénus Noto · Tous droits réservés
           </p>
           <div className="flex gap-6">
             <a href="/admin" className="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">

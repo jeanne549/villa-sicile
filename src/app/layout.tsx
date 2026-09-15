@@ -23,15 +23,15 @@ const cinzel = Cinzel({
 })
 
 export const metadata: Metadata = {
-  title: 'Villa Tramonto — Location de Luxe en Sicile',
+  title: 'Villa Vénus Noto — Location de Luxe en Sicile',
   description: 'Séjournez dans une villa d\'exception face à la mer en Sicile. 6 chambres, piscine à débordement, vue panoramique sur la Méditerranée. Location saisonnière haut de gamme.',
   keywords: ['villa sicile', 'location villa sicile', 'villa luxe sicile', 'villa bord de mer sicile', 'location saisonnière sicile'],
-  authors: [{ name: 'Villa Tramonto' }],
+  authors: [{ name: 'Villa Vénus Noto' }],
   openGraph: {
-    title: 'Villa Tramonto — Location de Luxe en Sicile',
+    title: 'Villa Vénus Noto — Location de Luxe en Sicile',
     description: 'Une villa d\'exception face à la Méditerranée. Piscine à débordement, 6 chambres, service conciergerie.',
     url: 'https://villa-sicile.vercel.app',
-    siteName: 'Villa Tramonto',
+    siteName: 'Villa Vénus Noto',
     locale: 'fr_FR',
     type: 'website',
     images: [
@@ -39,13 +39,13 @@ export const metadata: Metadata = {
         url: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=630&fit=crop',
         width: 1200,
         height: 630,
-        alt: 'Villa Tramonto — Sicile',
+        alt: 'Villa Vénus Noto — Sicile',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Villa Tramonto — Location de Luxe en Sicile',
+    title: 'Villa Vénus Noto — Location de Luxe en Sicile',
     description: 'Une villa d\'exception face à la Méditerranée.',
     images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=630&fit=crop'],
   },

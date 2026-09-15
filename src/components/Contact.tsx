@@ -62,7 +62,7 @@ export default function Contact() {
             <div className="space-y-6">
               {[
                 { icon: '📍', title: 'Localisation', text: 'Côte nord-est de la Sicile, Italie' },
-                { icon: '📧', title: 'Email', text: 'contact@villa-tramonto.com' },
+                { icon: '📧', title: 'Email', text: 'contact@villa-venus-noto.com' },
                 { icon: '📱', title: 'Téléphone', text: '+39 090 123 456' },
                 { icon: '🕐', title: 'Réponse', text: 'Sous 24 heures' },
               ].map((item) => (
