@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=85&fit=crop', alt: 'Vue mer depuis la terrasse', span: 'col-span-2 row-span-2' },
-  { src: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=85&fit=crop', alt: 'Piscine à débordement', span: 'col-span-1' },
-  { src: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=85&fit=crop', alt: 'Suite principale', span: 'col-span-1' },
-  { src: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=600&q=85&fit=crop', alt: 'Cuisine gastronomique', span: 'col-span-1' },
-  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85&fit=crop', alt: 'Salon principal', span: 'col-span-1' },
-  { src: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=85&fit=crop', alt: 'Terrasse panoramique', span: 'col-span-2' },
+  { src: '/photos/hero.jpg', alt: 'Piscine et jardins — vue d\'ensemble', span: 'col-span-2 row-span-2' },
+  { src: '/photos/veranda.jpg', alt: 'Véranda couverte avec vue collines', span: 'col-span-1' },
+  { src: '/photos/rooftop.jpg', alt: 'Rooftop 360° au coucher du soleil', span: 'col-span-1' },
+  { src: '/photos/jardins.jpg', alt: 'Pergola fleurie et jardins méditerranéens', span: 'col-span-1' },
+  { src: '/photos/table.jpg', alt: 'Table extérieure sur la véranda', span: 'col-span-1' },
+  { src: '/photos/facade.jpg', alt: 'Façade en pierre de la villa', span: 'col-span-2' },
 ]
 
 export default function Gallery() {
@@ -20,11 +20,10 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="section-subtitle">En images</p>
-          <h2 className="section-title">La villa en détail</h2>
+          <h2 className="section-title">Villa Vénus Noto</h2>
           <div className="gold-divider" />
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
           {photos.map((photo, i) => (
             <div
@@ -48,7 +47,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {lightbox !== null && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
@@ -62,7 +60,7 @@ export default function Gallery() {
           </button>
           <div className="relative max-w-5xl w-full h-[80vh]">
             <Image
-              src={photos[lightbox].src.replace('w=600', 'w=1200').replace('w=800', 'w=1600')}
+              src={photos[lightbox].src}
               alt={photos[lightbox].alt}
               fill
               className="object-contain"

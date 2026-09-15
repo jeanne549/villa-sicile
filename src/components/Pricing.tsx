@@ -2,24 +2,24 @@ const seasons = [
   {
     name: 'Basse saison',
     period: 'Octobre — Avril',
-    price: '1 800',
+    price: 'Sur demande',
     color: 'border-gray-200',
-    features: ['Jusqu\'à 12 personnes', 'Ménage quotidien', 'Conciergerie', 'Wi-Fi & parking'],
+    features: ['Jusqu\'à 9 personnes', '4 suites parentales', 'Piscine privée', 'WiFi & climatisation', 'Four à bois'],
   },
   {
     name: 'Moyenne saison',
     period: 'Mai, Juin & Septembre',
-    price: '2 800',
+    price: 'Sur demande',
     color: 'border-navy',
     featured: true,
-    features: ['Jusqu\'à 12 personnes', 'Ménage quotidien', 'Conciergerie', 'Wi-Fi & parking', 'Accueil aéroport'],
+    features: ['Jusqu\'à 9 personnes', '4 suites parentales', 'Piscine privée', 'WiFi & climatisation', 'Four à bois', 'Rooftop 360°'],
   },
   {
     name: 'Haute saison',
     period: 'Juillet & Août',
-    price: '4 500',
+    price: 'Sur demande',
     color: 'border-gold',
-    features: ['Jusqu\'à 12 personnes', 'Ménage quotidien', 'Conciergerie', 'Wi-Fi & parking', 'Accueil aéroport', 'Petit-déjeuner 3j'],
+    features: ['Jusqu\'à 9 personnes', '4 suites parentales', 'Piscine privée', 'WiFi & climatisation', 'Four à bois', 'Rooftop 360°'],
   },
 ]
 
@@ -32,7 +32,7 @@ export default function Pricing() {
           <h2 className="section-title">Location à la semaine</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base max-w-xl mx-auto">
-            Séjour minimum 7 nuits. Tarifs indiqués par semaine, toutes charges comprises.
+            Séjour minimum 7 nuits. Contactez-nous pour recevoir nos tarifs et vérifier les disponibilités.
           </p>
         </div>
 
@@ -50,8 +50,7 @@ export default function Pricing() {
               <p className="font-sans text-xs tracking-widest uppercase text-muted mb-2">{season.period}</p>
               <h3 className="font-serif text-2xl text-charcoal mb-1">{season.name}</h3>
               <div className="my-6">
-                <span className="font-serif text-5xl text-charcoal">{season.price} €</span>
-                <span className="font-sans text-muted text-sm"> / semaine</span>
+                <span className="font-serif text-3xl text-charcoal">{season.price}</span>
               </div>
               <ul className="space-y-3 mb-8">
                 {season.features.map((f) => (
@@ -76,8 +75,8 @@ export default function Pricing() {
 
         <div className="bg-white p-6 text-center border border-gray-100">
           <p className="font-sans text-sm text-muted">
-            💳 Acompte de 30% à la réservation · Solde 30 jours avant l&apos;arrivée · Caution 2 000€ ·
-            <a href="#contact" className="text-navy underline ml-1">Conditions complètes sur demande</a>
+            💳 Conditions et tarifs détaillés communiqués sur demande ·
+            <a href="#contact" className="text-navy underline ml-1">Nous contacter</a>
           </p>
         </div>
       </div>

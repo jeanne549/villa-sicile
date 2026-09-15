@@ -24,12 +24,12 @@ const cinzel = Cinzel({
 
 export const metadata: Metadata = {
   title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-  description: 'Séjournez dans une villa d\'exception face à la mer en Sicile. 6 chambres, piscine à débordement, vue panoramique sur la Méditerranée. Location saisonnière haut de gamme.',
-  keywords: ['villa sicile', 'location villa sicile', 'villa luxe sicile', 'villa bord de mer sicile', 'location saisonnière sicile'],
+  description: 'Villa de luxe à louer à Noto, Sicile. 4 suites parentales, piscine privée, rooftop 360°, jardins méditerranéens. À 5 km de Noto baroque UNESCO. Location saisonnière 9 personnes.',
+  keywords: ['villa noto sicile', 'location villa noto', 'villa luxe sicile', 'villa vénus noto', 'location saisonnière sicile', 'villa piscine noto'],
   authors: [{ name: 'Villa Vénus Noto' }],
   openGraph: {
     title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-    description: 'Une villa d\'exception face à la Méditerranée. Piscine à débordement, 6 chambres, service conciergerie.',
+    description: 'Villa d\'exception à Noto, Sicile. 4 suites, piscine privée, rooftop 360°. À 5 km de Noto UNESCO.',
     url: 'https://villa-sicile.vercel.app',
     siteName: 'Villa Vénus Noto',
     locale: 'fr_FR',

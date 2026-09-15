@@ -6,56 +6,54 @@ export default function About() {
   return (
     <section id="villa" className="py-24 lg:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <p className="section-subtitle">Notre villa</p>
-          <h2 className="section-title">Un refuge méditerranéen<br />hors du commun</h2>
+          <h2 className="section-title">Une demeure d&apos;exception<br />dans les collines de Noto</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base leading-relaxed max-w-2xl mx-auto">
-            Perchée sur les falaises de la côte nord-est de la Sicile, Villa Vénus Noto est une propriété privée
-            d&apos;exception qui offre intimité, élégance et vues à couper le souffle.
+            Nichée dans les collines dorées de Noto, Villa Vénus vous invite à découvrir
+            l&apos;art de vivre sicilien dans un cadre d&apos;une beauté rare. Entourée d&apos;oliviers
+            centenaires, d&apos;amandiers et de citronniers.
           </p>
         </div>
 
-        {/* Two column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative">
             <div className="relative h-[500px] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85&fit=crop"
-                alt="Intérieur luxueux de la villa"
+                src="/photos/villa.jpg"
+                alt="Vue d'ensemble Villa Vénus Noto avec piscine"
                 fill
                 className="object-cover"
               />
             </div>
-            {/* Floating badge */}
             <div className="absolute -bottom-6 -right-6 bg-navy text-white p-6 hidden md:block">
-              <p className="font-serif text-3xl">180°</p>
-              <p className="font-sans text-xs tracking-widest uppercase text-white/70">Vue mer</p>
+              <p className="font-serif text-3xl">360°</p>
+              <p className="font-sans text-xs tracking-widest uppercase text-white/70">Rooftop</p>
             </div>
           </div>
 
           <div className="lg:pl-8">
             <p className="section-subtitle">L&apos;histoire</p>
             <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight">
-              Architecture sicilienne<br />et modernité
+              Architecture sicilienne<br />et art de vivre
             </h3>
             <p className="font-sans text-muted leading-relaxed mb-6">
-              Construite en pierre locale et rénovée avec soin, la villa marie harmonieusement
-              l&apos;architecture traditionnelle sicilienne — voûtes en berceau, terrasses ombragées,
-              jardins parfumés — avec un intérieur contemporain signé par un designer milanais.
+              Construite en pierre locale, Villa Vénus marie harmonieusement l&apos;architecture
+              traditionnelle sicilienne — murs en pierre de tuf, vérandas ombragées, jardins
+              parfumés — avec des espaces de vie contemporains et confortables.
             </p>
             <p className="font-sans text-muted leading-relaxed mb-8">
-              Les 6 suites, toutes orientées vers la mer, offrent chacune une terrasse privative.
-              Les espaces communs s&apos;ouvrent généreusement sur l&apos;extérieur pour une vie indoor-outdoor
-              parfaite en été.
+              Les 4 suites parentales, toutes dotées d&apos;une salle de bain privée et d&apos;une
+              terrasse, s&apos;ouvrent sur la piscine ou les jardins. Le rooftop offre une vue
+              panoramique à 360° sur les collines siciliennes.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {[
-                { value: '850 m²', label: 'Surface habitable' },
-                { value: '3 000 m²', label: 'Terrain & jardins' },
-                { value: '12', label: 'Personnes max.' },
-                { value: '5★', label: 'Prestations' },
+                { value: '4 suites', label: 'Parentales' },
+                { value: '9', label: 'Personnes max.' },
+                { value: 'Rooftop', label: 'Vue 360°' },
+                { value: '5 km', label: 'De Noto UNESCO' },
               ].map((stat) => (
                 <div key={stat.label} className="border-l-2 border-gold pl-4">
                   <p className="font-serif text-2xl text-charcoal">{stat.value}</p>
@@ -66,17 +64,17 @@ export default function About() {
           </div>
         </div>
 
-        {/* Second row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="lg:pr-8 order-2 lg:order-1">
             <p className="section-subtitle">Les espaces</p>
             <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight">
-              Chaque pièce,<br />une invitation au luxe
+              Chaque espace,<br />une invitation au bonheur
             </h3>
             <p className="font-sans text-muted leading-relaxed mb-6">
-              La grande salle de séjour aux hauts plafonds, la cuisine professionnelle entièrement équipée,
-              la cave à vins, la salle de cinéma, le spa avec hammam et jacuzzi — chaque espace a été pensé
-              pour le confort absolu et le plaisir des sens.
+              La grande cuisine équipée avec véranda vue piscine, le four à bois pour des
+              soirées pizzas inoubliables, les deux vérandas couvertes pour déjeuner à l&apos;ombre,
+              le rooftop pour les couchers de soleil — chaque espace a été pensé pour le
+              plaisir et la convivialité.
             </p>
             <a href="#equipements" className="btn-outline">
               Voir tous les équipements
@@ -86,16 +84,16 @@ export default function About() {
             <div className="grid grid-cols-2 gap-3">
               <div className="relative h-64 overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&q=85&fit=crop"
-                  alt="Piscine à débordement"
+                  src="/photos/piscine.jpg"
+                  alt="Piscine privée Villa Vénus"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="relative h-64 overflow-hidden mt-8">
                 <Image
-                  src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=85&fit=crop"
-                  alt="Suite luxueuse"
+                  src="/photos/rooftop.jpg"
+                  alt="Rooftop avec vue 360°"
                   fill
                   className="object-cover"
                 />

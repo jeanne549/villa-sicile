@@ -1,23 +1,23 @@
 const amenities = [
   {
-    category: 'Espaces extérieurs',
-    icon: '☀️',
-    items: ['Piscine à débordement 15×5 m', 'Pool house avec bar', 'Terrasse panoramique 200 m²', 'Jardin méditerranéen 3 000 m²', 'Espace barbecue & cuisine d\'été', 'Parking privé 6 véhicules'],
+    category: 'Piscine & extérieur',
+    icon: '🏊',
+    items: ['Piscine privée avec plongeoir', 'Gazebo & bains de soleil', 'Transats & parasols', 'Terrasse autour de la piscine', 'Espace barbecue', 'Parking privé'],
   },
   {
-    category: 'Suites & chambres',
+    category: '4 suites parentales',
     icon: '🛏',
-    items: ['6 suites avec salle de bain privée', 'Suite master avec baignoire vue mer', 'Draps & serviettes de luxe', 'Climatisation individuelle', 'Wi-Fi haut débit partout', 'Coffre-fort & blackout'],
+    items: ['Suite Olivier — vue jardins', 'Suite Citronnier — vue piscine', 'Suite Amandier — vue collines', 'Suite Rooftop — vue 360°', 'Salle de bain privée dans chaque suite', 'Terrasse privative dans chaque suite'],
   },
   {
     category: 'Espaces de vie',
     icon: '🏛',
-    items: ['Grand salon 80 m² avec cheminée', 'Salle à manger 20 couverts', 'Cuisine professionnelle Miele', 'Cave à vins climatisée', 'Salle de cinéma 10 places', 'Bureau & espace de travail'],
+    items: ['Grande cuisine équipée', 'Véranda vue piscine (cuisine)', '2 vérandas couvertes', 'Four à bois authentique', 'Salon & salle à manger', 'WiFi & climatisation partout'],
   },
   {
-    category: 'Bien-être & loisirs',
-    icon: '🧘',
-    items: ['Spa avec hammam & jacuzzi', 'Salle de sport équipée', 'Vélos disponibles', 'Bibliothèque & jeux de société', 'Kayaks & matériel de snorkeling', 'Conciergerie 24h/24'],
+    category: 'Rooftop & jardins',
+    icon: '☀️',
+    items: ['Rooftop panoramique 360°', 'Canapés & salon extérieur', 'Vue sur les collines de Noto', 'Jardins méditerranéens', 'Oliviers & amandiers centenaires', 'Pergola fleurie'],
   },
 ]
 
@@ -27,7 +27,7 @@ export default function Amenities() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="section-subtitle">Le confort absolu</p>
-          <h2 className="section-title">Équipements & services</h2>
+          <h2 className="section-title">Équipements & espaces</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base max-w-xl mx-auto">
             Tout a été pensé pour que votre séjour soit parfait, du premier au dernier instant.
@@ -53,34 +53,34 @@ export default function Amenities() {
           ))}
         </div>
 
-        {/* Services */}
         <div className="mt-12 bg-navy text-white p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-serif text-2xl mb-4 text-gold-light">Services inclus</h3>
+              <h3 className="font-serif text-2xl mb-4 text-gold-light">La villa inclut</h3>
               <ul className="space-y-2 font-sans text-sm text-white/80">
-                <li>✓ Conciergerie personnelle</li>
-                <li>✓ Ménage quotidien</li>
-                <li>✓ Draps & serviettes changés chaque jour</li>
-                <li>✓ Accueil à l&apos;aéroport (option)</li>
+                <li>✓ Linge de maison fourni</li>
+                <li>✓ WiFi haut débit</li>
+                <li>✓ Climatisation</li>
+                <li>✓ Four à bois</li>
+                <li>✓ Parking privé</li>
               </ul>
             </div>
             <div>
-              <h3 className="font-serif text-2xl mb-4 text-gold-light">Services à la carte</h3>
+              <h3 className="font-serif text-2xl mb-4 text-gold-light">Les 4 suites</h3>
               <ul className="space-y-2 font-sans text-sm text-white/80">
-                <li>+ Chef privé & petit-déjeuner</li>
-                <li>+ Location de bateau / yacht</li>
-                <li>+ Excursions guidées en Sicile</li>
-                <li>+ Transferts privés</li>
+                <li>🌿 Suite Olivier — vue jardins</li>
+                <li>🍋 Suite Citronnier — vue piscine</li>
+                <li>🌸 Suite Amandier — vue collines</li>
+                <li>⭐ Suite Rooftop — vue 360°</li>
               </ul>
             </div>
             <div>
               <h3 className="font-serif text-2xl mb-4 text-gold-light">À proximité</h3>
               <ul className="space-y-2 font-sans text-sm text-white/80">
-                <li>🏖 Plage privée — 5 min à pied</li>
-                <li>🍋 Taormine — 20 min en voiture</li>
-                <li>🌋 Etna — 1h en voiture</li>
-                <li>✈️ Aéroport Catane — 1h30</li>
+                <li>🏛 Noto baroque UNESCO — 5 km</li>
+                <li>🏖 Plages de Vendicari — 5 km</li>
+                <li>🏙 Syracuse / Ortygie — 30 km</li>
+                <li>🏰 Ragusa Ibla UNESCO — 45 km</li>
               </ul>
             </div>
           </div>
