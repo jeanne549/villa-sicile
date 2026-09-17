@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { trackEvent } from '@/lib/track'
 
 type FormData = {
   name: string; email: string; phone: string
@@ -96,8 +97,10 @@ export default function Contact() {
       })
       if (!res.ok) throw new Error('server error')
       const data = await res.json()
-      if (data.success) setStatus('success')
-      else throw new Error('failed')
+      if (data.success) {
+        setStatus('success')
+        trackEvent('reservation_sent', { lang, guests: parseInt(form.guests) })
+      } else throw new Error('failed')
     } catch {
       setStatus('error')
     }
@@ -127,7 +130,9 @@ export default function Contact() {
                     <p className="font-sans text-xs tracking-widests uppercase text-gold mb-1">{item.title}</p>
                     {item.href ? (
                       <a href={item.href} target={item.href.startsWith('https') ? '_blank' : undefined}
-                        rel="noopener noreferrer" className="font-sans text-charcoal text-sm hover:text-gold transition-colors">
+                        rel="noopener noreferrer"
+                        onClick={() => item.href?.startsWith('mailto:') && trackEvent('email_click', { lang })}
+                        className="font-sans text-charcoal text-sm hover:text-gold transition-colors">
                         {item.text}
                       </a>
                     ) : (

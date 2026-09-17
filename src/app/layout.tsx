@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter, Cinzel } from 'next/font/google'
 import { headers } from 'next/headers'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import CookieBanner from '@/components/CookieBanner'
+import AnalyticsLoader from '@/components/AnalyticsLoader'
 import type { Lang } from '@/lib/i18n'
 import './globals.css'
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LanguageProvider initialLang={locale}>
           {children}
           <CookieBanner />
+          <AnalyticsLoader />
         </LanguageProvider>
       </body>
     </html>

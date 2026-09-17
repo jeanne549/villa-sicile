@@ -51,6 +51,9 @@ export default function CookieBanner() {
   const choose = (value: 'accepted' | 'refused') => {
     try {
       localStorage.setItem(STORAGE_KEY, value)
+      if (value === 'accepted') {
+        window.dispatchEvent(new Event('villa:consent:accepted'))
+      }
     } catch {
       // ignore
     }
