@@ -3,9 +3,22 @@
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { trackEvent } from '@/lib/track'
+
+const DIRECT_BADGE = {
+  fr: 'Réservation directe · Sans commission',
+  en: 'Direct booking · No commission',
+  it: 'Prenotazione diretta · Senza commissioni',
+}
+
+const PRICE_FROM = {
+  fr: 'Dès 580 € / nuit · jusqu\'à 9 personnes',
+  en: 'From €580 / night · up to 9 guests',
+  it: 'Da 580 € / notte · fino a 9 ospiti',
+}
 
 export default function Hero() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const parallaxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -38,9 +51,20 @@ export default function Hero() {
             Villa Vénus<br /><em className="not-italic text-gold-light">Noto</em>
           </h1>
           <div className="w-16 h-px bg-gold my-8" />
-          <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed max-w-xl mb-10">{t.hero.description}</p>
+          <p className="font-sans text-white/80 text-lg md:text-xl leading-relaxed max-w-xl mb-4">{t.hero.description}</p>
+
+          {/* Prix dès le premier écran */}
+          <p className="font-serif text-gold-light text-base md:text-lg mb-2">{PRICE_FROM[lang]}</p>
+          <p className="font-sans text-white/50 text-xs tracking-[0.25em] uppercase mb-8">{DIRECT_BADGE[lang]}</p>
+
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" className="btn-gold">{t.hero.cta_book}</a>
+            <a
+              href="#calendrier"
+              onClick={() => trackEvent('hero_cta_click', { source: 'primary', lang })}
+              className="btn-gold"
+            >
+              {t.hero.cta_book}
+            </a>
             <a href="#villa" className="border border-white/70 text-white px-8 py-4 font-sans text-sm tracking-widest uppercase hover:bg-white hover:text-navy transition-all duration-300 inline-flex items-center gap-2">
               {t.hero.cta_discover}
             </a>

@@ -9,6 +9,10 @@ import PointsForts from '@/components/PointsForts'
 import About from '@/components/About'
 import Gallery from '@/components/Gallery'
 import Amenities from '@/components/Amenities'
+import PricingGrid from '@/components/PricingGrid'
+import ContactRibbon from '@/components/ContactRibbon'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import StickyBar from '@/components/StickyBar'
 import Calendrier from '@/components/Calendrier'
 import Testimonials from '@/components/Testimonials'
 import ReviewForm from '@/components/ReviewForm'
@@ -20,18 +24,18 @@ const LOCALES: Lang[] = ['fr', 'en', 'it']
 
 const META = {
   fr: {
-    title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-    description: 'Villa de luxe à louer à Noto, Sicile. 4 suites, piscine privée 14×7 m, rooftop 360°, jardins méditerranéens. À 5 km de Noto baroque UNESCO. Jusqu\'à 9 personnes.',
+    title: 'Villa Vénus Noto — Location Luxe Sicile · Dès 580 €/nuit',
+    description: 'Location villa de luxe à Noto, Sicile. Dès 580 €/nuit · jusqu\'à 9 personnes · 4 suites, piscine privée 14×7 m, rooftop 360°. Réservation directe sans commission. À 5 km de Noto UNESCO.',
     ogLocale: 'fr_FR',
   },
   en: {
-    title: 'Villa Vénus Noto — Luxury Villa Rental in Sicily, Italy',
-    description: 'Luxury villa for rent in Noto, Sicily. 4 master suites, private pool 14×7 m, 360° rooftop, Mediterranean gardens. 5 km from UNESCO Baroque Noto. Up to 9 guests.',
+    title: 'Villa Vénus Noto — Luxury Villa Sicily · From €580/night',
+    description: 'Luxury villa rental in Noto, Sicily. From €580/night · up to 9 guests · 4 suites, private pool 14×7 m, 360° rooftop. Direct booking, no platform commission. 5 km from UNESCO Noto.',
     ogLocale: 'en_US',
   },
   it: {
-    title: 'Villa Vénus Noto — Affitto Villa di Lusso in Sicilia',
-    description: 'Villa di lusso in affitto a Noto, Sicilia. 4 suite matrimoniali, piscina privata 14×7 m, rooftop panoramico, giardini mediterranei. A 5 km da Noto patrimonio UNESCO. Fino a 9 ospiti.',
+    title: 'Villa Vénus Noto — Villa Lusso Sicilia · Da 580 €/notte',
+    description: 'Villa di lusso in affitto a Noto, Sicilia. Da 580 €/notte · fino a 9 ospiti · 4 suite, piscina privata 14×7 m, rooftop panoramico. Prenotazione diretta senza commissioni. A 5 km da Noto UNESCO.',
     ogLocale: 'it_IT',
   },
 }
@@ -85,18 +89,23 @@ export default function LocalePage({ params }: { params: { locale: string } }) {
         getOrganizationSchema(),
       ]} />
       <main>
-      <Navigation />
-      <Hero />
-      <About />
-      <Amenities />
-      <Gallery />
-      <PointsForts />
-      <Calendrier />
-      <Testimonials />
-      <ReviewForm />
-      <Contact />
-      <Footer />
-    </main>
+        <Navigation />
+        <Hero />
+        <About />
+        <ContactRibbon />
+        <Amenities />
+        <Gallery />
+        <ContactRibbon />
+        <PointsForts />
+        <PricingGrid locale={locale} />
+        <Calendrier />
+        <Testimonials />
+        <ReviewForm />
+        <Contact />
+        <Footer />
+      </main>
+      <WhatsAppButton />
+      <StickyBar />
     </>
   )
 }
