@@ -33,7 +33,7 @@ export default function PointsForts() {
           {t.pointsforts.points.map((point, i) => (
             <div key={i} className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch ${i % 2 === 1 ? 'lg:[direction:rtl]' : ''}`}>
               <div className={`relative h-[580px] overflow-hidden ${i % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
-                <Image src={photos[i]} alt={photoAlts[i]} fill className="object-cover object-center" />
+                <Image src={photos[i]} alt={photoAlts[i]} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-center" />
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2">
                   <span className="font-display text-navy text-[10px] tracking-[0.4em] uppercase">{point.label}</span>
                 </div>

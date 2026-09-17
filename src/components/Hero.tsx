@@ -34,7 +34,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
       <div ref={parallaxRef} className="absolute inset-0 scale-110">
-        <Image src="/photos/hero.jpg" alt="Villa Vénus Noto — piscine et jardins en Sicile" fill className="object-cover object-center" priority />
+        <Image src="/photos/hero.jpg" alt="Villa Vénus Noto — piscine et jardins en Sicile" fill sizes="100vw" className="object-cover object-center" priority />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/60" />
 

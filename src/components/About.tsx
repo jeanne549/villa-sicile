@@ -47,7 +47,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative">
             <div className="relative h-[720px] overflow-hidden">
-              <Image src="/photos/histoire.jpg" alt="Vue depuis le salon extérieur sur la piscine et la villa au coucher du soleil" fill className="object-cover object-center" />
+              <Image src="/photos/histoire.jpg" alt="Vue depuis le salon extérieur sur la piscine et la villa au coucher du soleil" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-center" />
             </div>
           </div>
 
@@ -90,6 +90,7 @@ export default function About() {
               src={espacesPhotos[current].src}
               alt={espacesPhotos[current].alt}
               fill
+              sizes="(max-width: 896px) calc(100vw - 48px), 848px"
               className={`object-cover ${espacesPhotos[current].pos} transition-opacity duration-500`}
             />
             {/* Flèche gauche */}
@@ -123,7 +124,7 @@ export default function About() {
                 className={`relative flex-1 overflow-hidden transition-all duration-200 ${i === current ? 'ring-2 ring-gold' : 'opacity-60 hover:opacity-100'}`}
                 style={{ aspectRatio: '1/1' }}
               >
-                <Image src={photo.src} alt={photo.alt} fill className={`object-cover ${photo.pos}`} />
+                <Image src={photo.src} alt={photo.alt} fill sizes="80px" className={`object-cover ${photo.pos}`} />
               </button>
             ))}
           </div>

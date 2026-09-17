@@ -46,7 +46,7 @@ export default function Gallery() {
         <div className="relative overflow-hidden mb-3 cursor-zoom-in" style={{ aspectRatio: '16/9' }}
           onClick={() => setLightbox({ src: photos[current].src, alt: photos[current].alt })}
           onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-          <Image key={current} src={photos[current].src} alt={photos[current].alt} fill className="object-cover object-center transition-opacity duration-500" priority />
+          <Image key={current} src={photos[current].src} alt={photos[current].alt} fill sizes="(max-width: 1280px) calc(100vw - 48px), 1184px" className="object-cover object-center transition-opacity duration-500" />
           <button onClick={(e) => { e.stopPropagation(); prev() }} aria-label="Précédent"
             className="absolute left-5 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal w-12 h-12 flex items-center justify-center text-2xl shadow-md transition-all duration-200">‹</button>
           <button onClick={(e) => { e.stopPropagation(); next() }} aria-label="Suivant"
@@ -62,7 +62,7 @@ export default function Gallery() {
             <button key={photo.src} onClick={() => setCurrent(i)}
               className={`relative flex-1 overflow-hidden transition-all duration-200 ${i === current ? 'ring-2 ring-gold' : 'opacity-50 hover:opacity-80'}`}
               style={{ aspectRatio: '1/1' }}>
-              <Image src={photo.src} alt={photo.alt} fill className="object-cover object-center" />
+              <Image src={photo.src} alt={photo.alt} fill sizes="100px" className="object-cover object-center" />
             </button>
           ))}
         </div>
