@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter, Cinzel } from 'next/font/google'
+import { headers } from 'next/headers'
+import { LanguageProvider } from '@/contexts/LanguageContext'
+import CookieBanner from '@/components/CookieBanner'
+import type { Lang } from '@/lib/i18n'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -22,45 +26,67 @@ const cinzel = Cinzel({
   display: 'swap',
 })
 
+const BASE_URL = 'https://www.villavenusnoto.com'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-  description: 'Villa de luxe à louer à Noto, Sicile. 4 suites parentales, piscine privée, rooftop 360°, jardins méditerranéens. À 5 km de Noto baroque UNESCO. Location saisonnière 9 personnes.',
-  keywords: ['villa noto sicile', 'location villa noto', 'villa luxe sicile', 'villa vénus noto', 'location saisonnière sicile', 'villa piscine noto'],
+  description: 'Villa de luxe à louer à Noto, Sicile. 4 suites parentales, piscine privée 14×7 m, rooftop 360°, jardins méditerranéens. À 5 km de Noto baroque UNESCO. Location saisonnière jusqu\'à 9 personnes.',
+  keywords: ['villa noto sicile', 'location villa noto', 'villa luxe sicile', 'villa vénus noto', 'location saisonnière sicile', 'villa piscine noto', 'contrada spaccazza'],
   authors: [{ name: 'Villa Vénus Noto' }],
+  alternates: {
+    canonical: BASE_URL,
+  },
   openGraph: {
     title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-    description: 'Villa d\'exception à Noto, Sicile. 4 suites, piscine privée, rooftop 360°. À 5 km de Noto UNESCO.',
-    url: 'https://villa-sicile.vercel.app',
+    description: 'Villa d\'exception à Noto, Sicile. 4 suites, piscine privée 14×7 m, rooftop 360°. À 5 km de Noto UNESCO.',
+    url: BASE_URL,
     siteName: 'Villa Vénus Noto',
     locale: 'fr_FR',
     type: 'website',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=630&fit=crop',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Villa Vénus Noto — Sicile',
+        alt: 'Villa Vénus Noto — Piscine et rooftop en Sicile',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Villa Vénus Noto — Location de Luxe en Sicile',
-    description: 'Une villa d\'exception face à la Méditerranée.',
-    images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=630&fit=crop'],
+    description: 'Villa d\'exception à Noto, Sicile. Piscine privée, rooftop 360°, jardins méditerranéens.',
+    images: ['/og-image.jpg'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    other: [{ rel: 'manifest', url: '/site.webmanifest' }],
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
+  verification: {
+    google: 'dy02-liORD9vNJTbETBLvPPKtxwRLUWVNHmY7LSk30E',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = (headers().get('x-locale') ?? 'fr') as Lang
   return (
-    <html lang="fr" className={`${cormorant.variable} ${inter.variable} ${cinzel.variable}`}>
+    <html lang={locale} className={`${cormorant.variable} ${inter.variable} ${cinzel.variable}`}>
       <body>
-        {children}
+        <LanguageProvider initialLang={locale}>
+          {children}
+          <CookieBanner />
+        </LanguageProvider>
       </body>
     </html>
   )

@@ -1,50 +1,68 @@
+'use client'
+
+import { useLanguage } from '@/contexts/LanguageContext'
+
+const hrefLinks = ['#villa', '#galerie', '#equipements', '#disponibilites', '#contact']
+
 export default function Footer() {
+  const { t } = useLanguage()
   const year = new Date().getFullYear()
+
   return (
     <footer className="bg-charcoal text-white py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <p className="font-display text-lg tracking-[0.2em] uppercase mb-1">Villa Vénus Noto</p>
-            <p className="font-sans text-white/50 text-xs tracking-widest uppercase mb-4">Noto · Sicile · Italie</p>
-            <p className="font-sans text-white/60 text-sm leading-relaxed">
-              Location de villa de luxe à Noto, Sicile. 4 suites, piscine privée, rooftop 360°.
-            </p>
+            <p className="font-sans text-white/50 text-xs tracking-widests uppercase mb-4">{t.footer.tagline}</p>
+            <p className="font-sans text-white/60 text-sm leading-relaxed">{t.footer.desc}</p>
           </div>
           <div>
-            <h4 className="font-sans text-xs tracking-widest uppercase text-gold mb-4">Navigation</h4>
+            <h4 className="font-sans text-xs tracking-widests uppercase text-gold mb-4">{t.footer.nav_title}</h4>
             <ul className="space-y-2">
-              {[
-                { label: 'La Villa', href: '#villa' },
-                { label: 'Galerie', href: '#galerie' },
-                { label: 'Équipements', href: '#equipements' },
-                { label: 'Tarifs', href: '#tarifs' },
-                { label: 'Réserver', href: '#contact' },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="font-sans text-white/60 text-sm hover:text-white transition-colors">
-                    {item.label}
-                  </a>
+              {t.footer.nav_links.map((label, i) => (
+                <li key={i}>
+                  <a href={hrefLinks[i]} className="font-sans text-white/60 text-sm hover:text-white transition-colors">{label}</a>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h4 className="font-sans text-xs tracking-widest uppercase text-gold mb-4">Contact</h4>
+            <h4 className="font-sans text-xs tracking-widests uppercase text-gold mb-4">{t.footer.contact_title}</h4>
             <div className="space-y-2 font-sans text-white/60 text-sm">
-              <p>Email : à venir</p>
-              <p>WhatsApp : à venir</p>
-              <p className="mt-4">Contrada Volpiglia<br />96017 Noto SR — Sicile, Italie</p>
+              <a href="mailto:contact@villavenusnoto.com" className="block hover:text-white transition-colors">contact@villavenusnoto.com</a>
+              <a href="https://wa.me/33624542995" target="_blank" rel="noopener noreferrer" className="block hover:text-white transition-colors">WhatsApp : +33 6 24 54 29 95</a>
+              <p className="mt-4 whitespace-pre-line">{t.footer.address}</p>
             </div>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-sans text-white/40 text-xs">
-            © {year} Villa Vénus Noto · Tous droits réservés
-          </p>
-          <a href="/admin" className="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">
-            Administration
-          </a>
+        {/* Identité légale + CIN/CIR */}
+        <div className="border-t border-white/10 pt-6 mb-4">
+          <div className="flex flex-wrap gap-x-6 gap-y-1 font-sans text-white/40 text-xs">
+            <span>Deschaux Jeanne · Codice fiscale DSCJNN71L64F943Q</span>
+            <span>CIN : <span className="font-mono">[À compléter]</span></span>
+            <span>CIR : <span className="font-mono">[À compléter]</span></span>
+            <span>Contact local : Emanuele Di Pietro · +39 348 006 46 72</span>
+          </div>
+        </div>
+
+        {/* Liens légaux */}
+        <div className="flex flex-wrap gap-x-4 gap-y-2 mb-6">
+          {[
+            { href: '/mentions-legales', label: 'Mentions légales' },
+            { href: '/confidentialite', label: 'Confidentialité' },
+            { href: '/cookies', label: 'Cookies' },
+            { href: '/conditions-de-reservation', label: 'Conditions' },
+          ].map(link => (
+            <a key={link.href} href={link.href} className="font-sans text-white/40 text-xs hover:text-white/70 transition-colors">
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-sans text-white/40 text-xs">© {year} Villa Vénus Noto · {t.footer.rights}</p>
+          <a href="/admin/calendrier" className="font-sans text-white/30 text-xs hover:text-white/60 transition-colors">{t.footer.admin}</a>
         </div>
       </div>
     </footer>

@@ -1,14 +1,7 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
 import { useState, useEffect, useCallback } from 'react'
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+import { useRouter } from 'next/navigation'
 
 type Request = {
   id: string
@@ -24,64 +17,38 @@ type Request = {
 }
 
 export default function AdminPage() {
-  const [password, setPassword] = useState('')
-  const [authed, setAuthed] = useState(false)
   const [requests, setRequests] = useState<Request[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [loading, setLoading]   = useState(true)
+  const [error, setError]       = useState('')
+  const router = useRouter()
 
   const fetchRequests = useCallback(async () => {
     setLoading(true)
-    const { data, error } = await supabaseAdmin
-      .from('contact_requests')
-      .select('*')
-      .order('created_at', { ascending: false })
-    if (error) setError('Erreur de chargement')
-    else setRequests(data || [])
+    const res = await fetch('/api/admin/requests')
+    if (res.status === 401) { router.push('/admin/login'); return }
+    if (!res.ok) { setError('Erreur de chargement'); setLoading(false); return }
+    setRequests(await res.json())
     setLoading(false)
-  }, [])
+  }, [router])
 
-  useEffect(() => {
-    if (authed) fetchRequests()
-  }, [authed, fetchRequests])
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (password === 'VillaSicile_Admin_2024') {
-      setAuthed(true)
-    } else {
-      setError('Mot de passe incorrect')
-    }
-  }
+  useEffect(() => { fetchRequests() }, [fetchRequests])
 
   const updateStatus = async (id: string, status: string) => {
-    await supabaseAdmin.from('contact_requests').update({ status }).eq('id', id)
+    await fetch(`/api/admin/requests?id=${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status }),
+    })
     fetchRequests()
   }
 
-  if (!authed) {
-    return (
-      <div className="min-h-screen bg-navy flex items-center justify-center px-6">
-        <div className="bg-white p-10 w-full max-w-sm">
-          <h1 className="font-serif text-2xl text-charcoal mb-2">Administration</h1>
-          <p className="font-sans text-muted text-sm mb-6">Villa Vénus Noto</p>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <input
-              type="password"
-              placeholder="Mot de passe"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="input-field"
-              autoFocus
-            />
-            {error && <p className="text-red-500 text-sm font-sans">{error}</p>}
-            <button type="submit" className="btn-primary w-full justify-center">
-              Connexion
-            </button>
-          </form>
-        </div>
-      </div>
-    )
+  const logout = async () => {
+    await fetch('/api/admin/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'logout' }),
+    })
+    router.push('/admin/login')
   }
 
   return (
@@ -91,13 +58,16 @@ export default function AdminPage() {
           <h1 className="font-serif text-xl">Villa Vénus Noto — Administration</h1>
           <p className="font-sans text-white/60 text-xs">{requests.length} demande(s) reçue(s)</p>
         </div>
-        <button onClick={() => setAuthed(false)} className="font-sans text-xs text-white/60 hover:text-white uppercase tracking-widest">
-          Déconnexion
-        </button>
+        <div className="flex items-center gap-6">
+          <a href="/admin/calendrier" className="font-sans text-xs text-white/70 hover:text-white tracking-widest uppercase">Calendrier</a>
+          <button onClick={logout} className="font-sans text-xs text-white/60 hover:text-white uppercase tracking-widest">
+            Déconnexion
+          </button>
+        </div>
       </header>
 
       <div className="max-w-6xl mx-auto px-6 py-8">
-        {loading && <p className="font-sans text-muted text-center py-12">Chargement...</p>}
+        {loading && <p className="font-sans text-muted text-center py-12">Chargement…</p>}
         {error && <p className="font-sans text-red-500 text-center py-4">{error}</p>}
 
         {!loading && requests.length === 0 && (
@@ -167,7 +137,7 @@ export default function AdminPage() {
                 {req.status === 'new' && (
                   <button
                     onClick={() => updateStatus(req.id, 'read')}
-                    className="font-sans text-xs tracking-widest uppercase border border-gray-300 text-muted px-4 py-2 hover:border-navy hover:text-navy transition-colors"
+                    className="font-sans text-xs tracking-widests uppercase border border-gray-300 text-muted px-4 py-2 hover:border-navy hover:text-navy transition-colors"
                   >
                     Marquer comme lu
                   </button>

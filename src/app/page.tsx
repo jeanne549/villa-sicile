@@ -1,27 +1,10 @@
-export const dynamic = 'force-dynamic'
+import { headers } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-import Navigation from '@/components/Navigation'
-import Hero from '@/components/Hero'
-import About from '@/components/About'
-import Gallery from '@/components/Gallery'
-import Amenities from '@/components/Amenities'
-import Pricing from '@/components/Pricing'
-import Testimonials from '@/components/Testimonials'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-
-export default function Home() {
-  return (
-    <main>
-      <Navigation />
-      <Hero />
-      <About />
-      <Amenities />
-      <Gallery />
-      <Pricing />
-      <Testimonials />
-      <Contact />
-      <Footer />
-    </main>
-  )
+export default function RootPage() {
+  const acceptLang = headers().get('accept-language') ?? ''
+  const primary = acceptLang.split(',')[0].split(';')[0].trim().toLowerCase()
+  if (primary.startsWith('it')) redirect('/it')
+  if (primary.startsWith('en')) redirect('/en')
+  redirect('/fr')
 }

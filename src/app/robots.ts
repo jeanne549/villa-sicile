@@ -5,6 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: '*', allow: '/', disallow: '/admin' },
     ],
-    sitemap: 'https://villa-sicile.vercel.app/sitemap.xml',
+    sitemap: 'https://www.villavenusnoto.com/sitemap.xml',
   }
 }

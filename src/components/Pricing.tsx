@@ -32,7 +32,7 @@ export default function Pricing() {
           <h2 className="section-title">Location à la semaine</h2>
           <div className="gold-divider" />
           <p className="font-sans text-muted text-base max-w-xl mx-auto">
-            Séjour minimum 7 nuits. Contactez-nous pour recevoir nos tarifs et vérifier les disponibilités.
+            Séjour minimum 6 nuits. Contactez-nous pour recevoir nos tarifs et vérifier les disponibilités.
           </p>
         </div>
 

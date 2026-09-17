@@ -1,105 +1,140 @@
 'use client'
 
 import Image from 'next/image'
+import { useState, useRef } from 'react'
+import Lightbox from '@/components/Lightbox'
+import { useLanguage } from '@/contexts/LanguageContext'
+
+const espacesPhotos = [
+  { src: '/photos/esp-piscine-rooftop.jpg', alt: 'Vue sur la piscine et les jardins depuis le rooftop au coucher du soleil', pos: 'object-center' },
+  { src: '/photos/piscine.jpg',             alt: 'Piscine et pergola avec transats balinais', pos: 'object-top' },
+  { src: '/photos/esp-jasmin.jpg',          alt: 'Véranda suite Gelsomino — fauteuil à bascule et vue sur le jardin', pos: 'object-center' },
+  { src: '/photos/esp-bougainvillier.jpg',  alt: 'Véranda suite Bougainvillea avec vue sur le jardin', pos: 'object-center' },
+  { src: '/photos/esp-bougainvillier2.jpg', alt: 'Véranda suite Bougainvillea — hamac et terrasse privée', pos: 'object-center' },
+  { src: '/photos/esp-patio.jpg',           alt: 'Véranda patio en pierre avec lanternes en rotin', pos: 'object-center' },
+  { src: '/photos/esp-patio-jardin.jpg',    alt: 'Patio couvert de vigne avec table et vue sur les jardins', pos: 'object-center' },
+  { src: '/photos/esp-lit-rooftop.jpg',     alt: 'Lit rooftop avec coussins colorés et vue coucher de soleil', pos: 'object-center' },
+  { src: '/photos/esp-rooftop-table.jpg',   alt: 'Grande table et cuisine extérieure sur le rooftop', pos: 'object-center' },
+  { src: '/photos/esp-vue-rooftop.jpg',     alt: 'Vue panoramique depuis le rooftop — palmiers et collines siciliennes', pos: 'object-center' },
+  { src: '/photos/photo2.jpg',              alt: 'Vue piscine depuis la véranda au coucher du soleil', pos: 'object-center' },
+  { src: '/photos/jardins.jpg',             alt: 'Jardins méditerranéens au soleil couchant', pos: 'object-top' },
+]
 
 export default function About() {
+  const { t } = useLanguage()
+  const [current, setCurrent] = useState(0)
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
+  const total = espacesPhotos.length
+  const touchStartX = useRef(0)
+  const prev = () => setCurrent((c) => (c - 1 + total) % total)
+  const next = () => setCurrent((c) => (c + 1) % total)
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.targetTouches[0].clientX }
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 50) diff > 0 ? next() : prev()
+  }
+
   return (
     <section id="villa" className="py-24 lg:py-32 bg-cream">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <p className="section-subtitle">Notre villa</p>
-          <h2 className="section-title">Une demeure d&apos;exception<br />dans les collines de Noto</h2>
+          <p className="section-subtitle">{t.about.subtitle}</p>
+          <h2 className="section-title whitespace-pre-line">{t.about.title}</h2>
           <div className="gold-divider" />
-          <p className="font-sans text-muted text-base leading-relaxed max-w-2xl mx-auto">
-            Nichée dans les collines dorées de Noto, à seulement <strong className="text-charcoal">5 km du centre historique classé UNESCO</strong> et <strong className="text-charcoal">5 km des premières plages</strong>, Villa Vénus vous invite à découvrir l&apos;art de vivre sicilien dans un cadre d&apos;une beauté rare. Entourée d&apos;oliviers centenaires, d&apos;amandiers et de citronniers.
-          </p>
+          <p className="font-sans text-muted text-base leading-relaxed max-w-2xl mx-auto">{t.about.intro}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div className="relative">
-            <div className="relative h-[500px] overflow-hidden">
-              <Image
-                src="/photos/villa.jpg"
-                alt="Vue d'ensemble Villa Vénus Noto avec piscine"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 bg-navy text-white p-6 hidden md:block">
-              <p className="font-serif text-3xl">360°</p>
-              <p className="font-sans text-xs tracking-widest uppercase text-white/70">Rooftop</p>
+            <div className="relative h-[720px] overflow-hidden">
+              <Image src="/photos/histoire.jpg" alt="Vue depuis le salon extérieur sur la piscine et la villa au coucher du soleil" fill className="object-cover object-center" />
             </div>
           </div>
 
           <div className="lg:pl-8">
-            <p className="section-subtitle">L&apos;histoire</p>
-            <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight">
-              Architecture sicilienne<br />et art de vivre
-            </h3>
-            <p className="font-sans text-muted leading-relaxed mb-6">
-              Construite en pierre locale, Villa Vénus marie harmonieusement l&apos;architecture
-              traditionnelle sicilienne — murs en pierre de tuf, vérandas ombragées, jardins
-              parfumés — avec des espaces de vie contemporains et confortables.
-            </p>
-            <p className="font-sans text-muted leading-relaxed mb-8">
-              Les 4 suites parentales, toutes dotées d&apos;une salle de bain privée et d&apos;une
-              terrasse, s&apos;ouvrent sur la piscine ou les jardins. Le rooftop offre une vue
-              panoramique à 360° sur les collines siciliennes.
-            </p>
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { value: '4 suites', label: 'Parentales' },
-                { value: '9', label: 'Personnes max.' },
-                { value: '5 km', label: 'De Noto UNESCO' },
-                { value: '5 km', label: 'Des premières plages' },
-              ].map((stat) => (
-                <div key={stat.label} className="border-l-2 border-gold pl-4">
-                  <p className="font-serif text-2xl text-charcoal">{stat.value}</p>
-                  <p className="font-sans text-xs text-muted tracking-wide uppercase">{stat.label}</p>
+            <p className="section-subtitle">{t.about.histoire_subtitle}</p>
+            <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight whitespace-pre-line">{t.about.histoire_title}</h3>
+            <p className="font-sans text-muted leading-relaxed mb-6">{t.about.histoire_p1}</p>
+            <p className="font-sans text-muted leading-relaxed mb-4">{t.about.histoire_p2}</p>
+            <p className="font-sans text-muted leading-relaxed mb-4">{t.about.histoire_p3}</p>
+            <p className="font-sans text-muted leading-relaxed mb-8">{t.about.histoire_p4}</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {t.about.stats.map((value, i) => (
+                <div key={i} className="border-l-2 border-gold pl-4">
+                  <p className="font-serif text-2xl text-charcoal">{value}</p>
+                  <p className="font-sans text-xs text-muted tracking-wide uppercase">{t.about.stats_labels[i]}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="lg:pr-8 order-2 lg:order-1">
-            <p className="section-subtitle">Les espaces</p>
-            <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight">
-              Chaque espace,<br />une invitation au bonheur
-            </h3>
-            <p className="font-sans text-muted leading-relaxed mb-6">
-              La grande cuisine équipée avec véranda vue piscine, le four à bois pour des
-              soirées pizzas inoubliables, les deux vérandas couvertes pour déjeuner à l&apos;ombre,
-              le rooftop pour les couchers de soleil — chaque espace a été pensé pour le
-              plaisir et la convivialité.
-            </p>
-            <a href="#equipements" className="btn-outline">
-              Voir tous les équipements
-            </a>
-          </div>
-          <div className="relative order-1 lg:order-2">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src="/photos/piscine.jpg"
-                  alt="Piscine privée Villa Vénus"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-64 overflow-hidden mt-8">
-                <Image
-                  src="/photos/rooftop.jpg"
-                  alt="Rooftop avec vue 360°"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+        <div id="espaces" className="max-w-3xl mx-auto text-center mb-6">
+          <p className="section-subtitle">{t.about.espaces_subtitle}</p>
+          <h3 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 leading-tight whitespace-pre-line">{t.about.espaces_title}</h3>
+          <p className="font-sans text-muted leading-relaxed mb-10">{t.about.espaces_desc}</p>
+        </div>
+
+        {/* Carrousel des espaces */}
+        <div className="relative mb-10 max-w-4xl mx-auto">
+          {/* Photo principale */}
+          <div
+            className="relative overflow-hidden cursor-zoom-in"
+            style={{ aspectRatio: '4/3' }}
+            onClick={() => setLightbox({ src: espacesPhotos[current].src, alt: espacesPhotos[current].alt })}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <Image
+              key={current}
+              src={espacesPhotos[current].src}
+              alt={espacesPhotos[current].alt}
+              fill
+              className={`object-cover ${espacesPhotos[current].pos} transition-opacity duration-500`}
+            />
+            {/* Flèche gauche */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prev() }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal w-10 h-10 flex items-center justify-center transition-all duration-200 shadow-md"
+              aria-label="Photo précédente"
+            >
+              ‹
+            </button>
+            {/* Flèche droite */}
+            <button
+              onClick={(e) => { e.stopPropagation(); next() }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-charcoal w-10 h-10 flex items-center justify-center transition-all duration-200 shadow-md"
+              aria-label="Photo suivante"
+            >
+              ›
+            </button>
+            {/* Compteur */}
+            <div className="absolute bottom-4 right-4 bg-black/40 text-white font-sans text-xs px-3 py-1 tracking-widest">
+              {current + 1} / {total}
             </div>
           </div>
+
+          {/* Vignettes */}
+          <div className="flex gap-2 mt-2">
+            {espacesPhotos.map((photo, i) => (
+              <button
+                key={photo.src}
+                onClick={() => setCurrent(i)}
+                className={`relative flex-1 overflow-hidden transition-all duration-200 ${i === current ? 'ring-2 ring-gold' : 'opacity-60 hover:opacity-100'}`}
+                style={{ aspectRatio: '1/1' }}
+              >
+                <Image src={photo.src} alt={photo.alt} fill className={`object-cover ${photo.pos}`} />
+              </button>
+            ))}
+          </div>
         </div>
+
+        <div className="text-center">
+          <a href="#equipements" className="btn-outline">{t.about.cta_equipements}</a>
+        </div>
+
       </div>
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
     </section>
   )
 }
